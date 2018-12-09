@@ -8,6 +8,7 @@
     
     <body>
 		<h1>WELCOME TO THE BLOG !</h1>
-    	<?= $content ?>	
+    	<p><a href="index.php?action=viewMember">Inscription</a></p>
+    	<?= $content ?>
     </body>
 </html>

@@ -29,6 +29,14 @@ try {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
         }
+        // Affichage de la page d'inscription membre
+        elseif ($_GET['action'] == 'viewMember') {
+            require 'view/addMemberView.php';
+        }
+        // Inscription d'un membre
+        elseif ($_GET['action'] == 'addMember') {
+            addMember($_POST['pseudo'], $_POST['pass'], $_POST['email']);
+        }
     } else {
         listPosts();
     }

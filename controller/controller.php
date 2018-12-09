@@ -2,6 +2,7 @@
 // Chargement des classes
 require_once 'model/PostManager.php';
 require_once 'model/CommentManager.php';
+require_once 'model/MemberManager.php';
 
 // Affichage des 5 derniers billets
 function listPosts() {
@@ -33,4 +34,10 @@ function addComment($postId, $author, $comment) {
         header('Location: index.php?action=post&id=' . $postId);
     }
     
+}
+
+// Inscription d'un membre
+function addMember($pseudo, $pass, $email) {
+    $memberManager = new MemberManager();
+    $member = $memberManager->MMaddMember($pseudo, $pass, $email);
 }
