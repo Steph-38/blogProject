@@ -12,6 +12,10 @@
 		<input type="password" name="pass" />
 	</p>
 	<p>
+		Vérification du mot de passe
+		<input type="password" name="pass2" />
+	</p>
+	<p>
 		E-mail
 		<input type="email" name="email" />
 	</p>

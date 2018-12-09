@@ -35,7 +35,13 @@ try {
         }
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
-            addMember($_POST['pseudo'], $_POST['pass'], $_POST['email']);
+            // Controle du mot de passe
+            if ($_POST['pass'] == $_POST['pass2']) {
+                $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+                addMember($_POST['pseudo'], $passHash, $_POST['email']);          
+            } else {
+                throw new Exception('Les mots de passe ne sont pas identique');
+            }
         }
     } else {
         listPosts();
