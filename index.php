@@ -35,12 +35,17 @@ try {
         }
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
-            // Controle du mot de passe
-            if ($_POST['pass'] == $_POST['pass2']) {
-                $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
-                addMember($_POST['pseudo'], $passHash, $_POST['email']);          
+            // Contrôle des champs de formulaire
+            if (! empty($_POST['pseudo']) && ! empty($_POST['email']) && ! empty($_POST['pass'])) {
+                // Controle du mot de passe
+                if ($_POST['pass'] == $_POST['pass2']) {
+                    $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
+                    addMember($_POST['pseudo'], $passHash, $_POST['email']);
+                } else {
+                    throw new Exception('Les mots de passe ne sont pas identique');
+                };
             } else {
-                throw new Exception('Les mots de passe ne sont pas identique');
+                throw new Exception('Tous les champs ne sont pas remplis');
             }
         }
     } else {
