@@ -40,6 +40,13 @@ function addComment($postId, $author, $comment) {
 function addMember($pseudo, $pass, $email) {
     $memberManager = new MemberManager();
     $member = $memberManager->MMaddMember($pseudo, $pass, $email);
-    
     header('Location: index.php?action=viewMember');
 }
+
+function freeMember($pseudo) {
+    $freeMember = new MemberManager();
+    $member = $freeMember->MMfreeMember($pseudo);
+    return $member;
+}
+
+
