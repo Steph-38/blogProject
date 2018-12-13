@@ -13,7 +13,6 @@ class MemberManager extends Manager {
             'pass' => $pass,
             'email' => $email
         ));
-        
         return $member;
     }
     
@@ -21,7 +20,7 @@ class MemberManager extends Manager {
         $db = $this->dbConnect();
         $recovery = $db->prepare("SELECT pseudo FROM members WHERE pseudo = ?");
         $recovery->execute(array($pseudo));
-        $result = $recovery->fetch(); 
+        $result = $recovery->fetch();
         return $result;
     }
 }

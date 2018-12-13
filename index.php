@@ -37,8 +37,9 @@ try {
         elseif ($_GET['action'] == 'addMember') {
             // Contrôle des champs de formulaire
             if (! empty($_POST['pseudo']) && ! empty($_POST['email']) && ! empty($_POST['pass'])) {
-                // Controle du mot de passe
+                // Vérification de la disponibilité du pseudo dans la db
                 if (freeMember($_POST['pseudo']) == null) {
+                    // Hashage et contrôle du mot de passe
                     if ($_POST['pass'] == $_POST['pass2']) {
                         $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
                         addMember($_POST['pseudo'], $passHash, $_POST['email']);
@@ -48,8 +49,6 @@ try {
                 } else {
                     throw new Exception('Le pseudo est déjà pris');
                 }
-                
-
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
@@ -60,9 +59,3 @@ try {
 } catch (Exception $e) {
     echo 'Erreur : ' . $e->getMessage();
 }
-
-
-
-
-
-

@@ -43,6 +43,7 @@ function addMember($pseudo, $pass, $email) {
     header('Location: index.php?action=viewMember');
 }
 
+// Disponibilité du pseudo dans la db
 function freeMember($pseudo) {
     $freeMember = new MemberManager();
     $member = $freeMember->MMfreeMember($pseudo);
