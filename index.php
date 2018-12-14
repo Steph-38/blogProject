@@ -33,13 +33,17 @@ try {
         elseif ($_GET['action'] == 'viewMember') {
             require 'view/addMemberView.php';
         }
+        // Affichage de la page de connexion d'un membre
+        elseif ($_GET['action'] == 'viewConnexion') {
+            require 'view/ConnexionView.php';
+        }
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
             // Contrôle des champs de formulaire
             if (! empty($_POST['pseudo']) && ! empty($_POST['email']) && ! empty($_POST['pass'])) {
-                // Vérification de la disponibilité du pseudo dans la db
+                // Disponibilité du pseudo
                 if (freeMember($_POST['pseudo']) == null) {
-                    // Hashage et contrôle du mot de passe
+                    // Hashage et vérification du mot de passe
                     if ($_POST['pass'] == $_POST['pass2']) {
                         $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
                         addMember($_POST['pseudo'], $passHash, $_POST['email']);
@@ -52,6 +56,14 @@ try {
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis');
             }
+        }
+        // Connexion d'un membre
+        elseif ($_GET['action'] == 'connexionMember') {
+            connexionMember($_POST['pseudo'], $_POST['pass']);
+        }
+        // Déconnexion d'un membre
+        elseif ($_GET['action'] == 'logout') {
+            logout();
         }
     } else {
         listPosts();

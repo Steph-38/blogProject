@@ -4,7 +4,7 @@
 <!-- Formulaire d'inscription d'un membre -->
 <form method="post" action="index.php?action=addMember">
 	<P>
-		Auteur
+		Pseudo
 		<input type="text" name="pseudo" />
 	</P>
 	<p>
