@@ -33,12 +33,17 @@ try {
         elseif ($_GET['action'] == 'viewMember') {
             require 'view/addMemberView.php';
         }
+        // Affichage de la page de connexion d'un membre
+        elseif ($_GET['action'] == 'viewConnexion') {
+            require 'view/memberConnexionView.php';
+        }
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
             // Contrôle des champs de formulaire
             if (! empty($_POST['pseudo']) && ! empty($_POST['email']) && ! empty($_POST['pass'])) {
-                // Controle du mot de passe
+                // Disponibilité du pseudo
                 if (freeMember($_POST['pseudo']) == null) {
+                    // Hashage et vérification du mot de passe
                     if ($_POST['pass'] == $_POST['pass2']) {
                         $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
                         addMember($_POST['pseudo'], $passHash, $_POST['email']);
@@ -48,10 +53,19 @@ try {
                 } else {
                     throw new Exception('Le pseudo est déjà pris');
                 }
-                
-
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis');
+            }
+        }
+        // Connexion d'un membre
+        elseif ($_GET['action'] == 'connexionMember') {
+            if (($_POST['pseudo'] == connexionMember($_POST['pseudo'])) && 
+                (password_verify($_POST['pass'], connexionMember($_POST['pass'])))) {
+                session_start();
+    
+                $_SESSION['pseudo'] = $_POST['pseudo'];
+            } else {
+                throw new Exception('Mauvais identifiant ou mot de passe !');
             }
         }
     } else {

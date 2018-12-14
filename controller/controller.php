@@ -3,6 +3,7 @@
 require_once 'model/PostManager.php';
 require_once 'model/CommentManager.php';
 require_once 'model/MemberManager.php';
+require_once 'model/ConnexionManager.php';
 
 // Affichage des 5 derniers billets
 function listPosts() {
@@ -49,4 +50,10 @@ function freeMember($pseudo) {
     return $member;
 }
 
+function connexionMember($pseudo) {
+    $connexion = new ConnexionManager();
+    $connexionMember = $connexion->CMconnexion($pseudo);
+    return $connexionMember;
+    header('Location: index.php?action=viewConnexion');
+}
 

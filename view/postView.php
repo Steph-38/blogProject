@@ -3,7 +3,6 @@
 
 
 <div class="news"> 
-	<p><a href="index.php">Retour à la liste des billets</a></p>
     <h3>
     	<?= htmlspecialchars($post['title'])?>
     	le <?= $post['creation_date_fr']?>
