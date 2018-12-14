@@ -35,7 +35,7 @@ try {
         }
         // Affichage de la page de connexion d'un membre
         elseif ($_GET['action'] == 'viewConnexion') {
-            require 'view/memberConnexionView.php';
+            require 'view/ConnexionView.php';
         }
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
@@ -59,14 +59,11 @@ try {
         }
         // Connexion d'un membre
         elseif ($_GET['action'] == 'connexionMember') {
-            if (($_POST['pseudo'] == connexionMember($_POST['pseudo'])) && 
-                (password_verify($_POST['pass'], connexionMember($_POST['pass'])))) {
-                session_start();
-    
-                $_SESSION['pseudo'] = $_POST['pseudo'];
-            } else {
-                throw new Exception('Mauvais identifiant ou mot de passe !');
-            }
+            connexionMember($_POST['pseudo'], $_POST['pass']);
+        }
+        // Déconnexion d'un membre
+        elseif ($_GET['action'] == 'logout') {
+            logout();
         }
     } else {
         listPosts();

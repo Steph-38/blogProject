@@ -50,10 +50,25 @@ function freeMember($pseudo) {
     return $member;
 }
 
-function connexionMember($pseudo) {
+function connexionMember($pseudo, $pass) {
     $connexion = new ConnexionManager();
-    $connexionMember = $connexion->CMconnexion($pseudo);
-    return $connexionMember;
-    header('Location: index.php?action=viewConnexion');
+    $connexion2 = $connexion->CMconnexion($pseudo);
+    $password = password_verify($pass, $connexion2['pass']);
+    if (!$password) {
+        throw new Exception('Mauvais identifiant ou mot de passe !');
+    } else {
+        session_start();
+        $_SESSION['id'] = $connexion2['id'];
+        $_SESSION['pseudo'] = $pseudo;
+        header('Location: index.php?action=viewConnexion');
+    }
+    
+}
+
+function logout() {
+    session_start();
+    $_SESSION = array();
+    session_destroy();
+    header('Location: index.php');
 }
 
