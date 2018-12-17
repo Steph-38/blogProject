@@ -37,11 +37,14 @@ h1 {
     margin: auto;
 }
 
-header {
+.navigation {
     width: 50%;
     min-width: 250px;
     margin: auto;
-    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    overflow: auto;
+    padding: 10px;
 }
 
 header a {
@@ -50,7 +53,7 @@ header a {
     background: rgb(30, 30, 180);
     text-decoration: none;
     padding: 5px;
-    margin: 0px;
+    
     /*margin: haut/bas gauche/droite;*/
 }
 

@@ -19,12 +19,19 @@ try {
         elseif ($_GET['action'] == 'addComment') {
             // Controle de l'id du billet
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                // Controle des champs du formulaire
-                if (! empty($_POST['author']) && ! empty($_POST['comment'])) {
-                    addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                // identifiants de connexion
+                session_start();
+                if (!empty($_SESSION['id']) && !empty($_SESSION['pseudo'])) {
+                    // Controle des champs du form
+                    if (! empty($_POST['author']) && ! empty($_POST['comment'])) {
+                        addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                    } else {
+                        throw new Exception('Tous les champs ne sont pas remplis !');
+                    }
                 } else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
+                    throw new Exception('Connexion obligatoire pour l\'ajout de commentaires');
                 }
+
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
