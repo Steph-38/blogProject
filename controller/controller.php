@@ -51,17 +51,17 @@ function freeMember($pseudo) {
     return $member;
 }
 
-function connexionMember($pseudo, $pass) {
+function login($pseudo, $pass) {
     $connexion = new ConnexionManager();
-    $connexion2 = $connexion->CMconnexion($pseudo);
-    $password = password_verify($pass, $connexion2['pass']);
+    $login = $connexion->CMlogin($pseudo);
+    $password = password_verify($pass, $login['pass']);
     if (!$password) {
         throw new Exception('Mauvais identifiant ou mot de passe !');
     } else {
         session_start();
-        $_SESSION['id'] = $connexion2['id'];
+        $_SESSION['id'] = $login['id'];
         $_SESSION['pseudo'] = $pseudo;
-        header('Location: index.php?action=viewConnexion');
+        header('Location: index.php?action=viewLogin');
     }
     
 }

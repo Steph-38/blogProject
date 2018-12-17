@@ -34,8 +34,8 @@ try {
             require 'view/addMemberView.php';
         }
         // Affichage de la page de connexion d'un membre
-        elseif ($_GET['action'] == 'viewConnexion') {
-            require 'view/ConnexionView.php';
+        elseif ($_GET['action'] == 'viewLogin') {
+            require 'view/loginView.php';
         }
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
@@ -58,8 +58,8 @@ try {
             }
         }
         // Connexion d'un membre
-        elseif ($_GET['action'] == 'connexionMember') {
-            connexionMember($_POST['pseudo'], $_POST['pass']);
+        elseif ($_GET['action'] == 'login') {
+            login($_POST['pseudo'], $_POST['pass']);
         }
         // Déconnexion d'un membre
         elseif ($_GET['action'] == 'logout') {
