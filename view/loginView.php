@@ -3,13 +3,13 @@
 
 <!-- Formulaire de connexion d'un membre -->
 <form method="post" action="index.php?action=login">
+	<P>
+		<label for="pseudo">Pseudo</label><br />
+		<input type="text" id="pseudo" name="pseudo" maxlength="10"/>
+	</P>
 	<p>
-		Pseudo
-		<input type="text" name="pseudo" />
-	</p>
-	<p>
-		Mot de passe
-		<input type="password" name="pass" />
+		<label for="passe">Mot de passe</label><br />
+		<input type="password" id="passe" name="pass" maxlength="20" size="30"/>
 	</p>
 	<p>
 		<input type="submit" value="Se connecter" />

@@ -4,20 +4,20 @@
 <!-- Formulaire d'inscription d'un membre -->
 <form method="post" action="index.php?action=addMember">
 	<P>
-		Pseudo
-		<input type="text" name="pseudo" />
+		<label for="pseudo">Pseudo</label><br />
+		<input type="text" id="pseudo" name="pseudo" maxlength="10"/>
 	</P>
 	<p>
-		Mot de passe
-		<input type="password" name="pass" />
+		<label for="passe">Mot de passe</label><br />
+		<input type="password" id="passe" name="pass" maxlength="20" size="30"/>
 	</p>
 	<p>
-		Vérification du mot de passe
-		<input type="password" name="pass2" />
+		<label for="passe2">Vérification du mot de passe</label><br />
+		<input type="password" id="passe2" name="pass2" maxlength="20" size="30"/>
 	</p>
 	<p>
-		E-mail
-		<input type="email" name="email" />
+		<label for="email">E-mail</label><br />
+		<input type="email" id="email" name="email" maxlength="254" size="30"/>
 	</p>
 	<p>
 		<input type="submit" value="Valider" />
