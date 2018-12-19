@@ -58,3 +58,15 @@ header a:hover {
 header a:active {
     font-weight: bold;
 }
+
+form {
+	background: rgb(128, 128, 255);
+	border-left: 3px solid black;
+	padding: 1px 0px 1px 6px;
+	border-radius: 0px 10px 10px 0px;
+	width: 300px;
+}
+
+label {
+	font-weight: bold;
+}

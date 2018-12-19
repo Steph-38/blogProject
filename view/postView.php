@@ -31,7 +31,7 @@ while ($comment = $comments->fetch()) {
 <form method="post" action="index.php?action=addComment&amp;id=<?= $post['id']?>">
 	<p>
 		<label for="comment">Commentaire</label><br />
-		<textarea id="comment" name="comment" rows="4" cols="30"></textarea>
+		<textarea id="comment" name="comment" rows="4" cols="28"></textarea>
 	</p>
 	<p>
 		<input type="submit" />
