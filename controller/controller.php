@@ -41,7 +41,6 @@ function addComment($postId, $author, $comment) {
 function addMember($pseudo, $pass, $email) {
     $memberManager = new MemberManager();
     $member = $memberManager->MMaddMember($pseudo, $pass, $email);
-    header('Location: index.php?action=viewMember');
 }
 
 // Disponibilité du pseudo dans la db
@@ -61,7 +60,7 @@ function login($pseudo, $pass) {
         session_start();
         $_SESSION['id'] = $login['id'];
         $_SESSION['pseudo'] = $pseudo;
-        header('Location: index.php?action=viewLogin');
+        header('Location: index.php?action=listPosts');
     }
     
 }

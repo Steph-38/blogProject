@@ -54,6 +54,7 @@ try {
                     if ($_POST['pass'] == $_POST['pass2']) {
                         $passHash = password_hash($_POST['pass'], PASSWORD_DEFAULT);
                         addMember($_POST['pseudo'], $passHash, $_POST['email']);
+                        login($_POST['pseudo'], $_POST['pass']);
                     } else {
                         throw new Exception('Les mots de passe ne sont pas identique');
                     }
