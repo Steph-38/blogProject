@@ -30,10 +30,6 @@ while ($comment = $comments->fetch()) {
 <!-- formulaire d'ajout des commentaires !-->
 <form method="post" action="index.php?action=addComment&amp;id=<?= $post['id']?>">
 	<p>
-		<label for="author">Auteur</label><br />
-		<input type="text" id="author" name="author" />
-	</p>
-	<p>
 		<label for="comment">Commentaire</label><br />
 		<textarea id="comment" name="comment" rows="" cols=""></textarea>
 	</p>

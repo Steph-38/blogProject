@@ -22,11 +22,11 @@ try {
                 // identifiants de connexion
                 session_start();
                 if (!empty($_SESSION['id']) && !empty($_SESSION['pseudo'])) {
-                    // Controle des champs du form
-                    if (! empty($_POST['author']) && ! empty($_POST['comment'])) {
-                        addComment($_GET['id'], $_POST['author'], $_POST['comment']);
+                    // Controle des champs du formulaire
+                    if (!empty($_POST['comment'])) {
+                        addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
                     } else {
-                        throw new Exception('Tous les champs ne sont pas remplis !');
+                        throw new Exception('Un commentaire SVP !');
                     }
                 } else {
                     throw new Exception('Connexion obligatoire pour l\'ajout de commentaires');
@@ -76,5 +76,6 @@ try {
         listPosts();
     }
 } catch (Exception $e) {
-    echo 'Erreur : ' . $e->getMessage();
+    $errorMessage = $e->getMessage();
+    require 'view/errorView.php';
 }
