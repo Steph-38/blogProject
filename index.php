@@ -17,12 +17,9 @@ try {
         } 
         // Ajout d'un commentaire
         elseif ($_GET['action'] == 'addComment') {
-            // Controle de l'id du billet
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                // identifiants de connexion
                 session_start();
                 if (!empty($_SESSION['id']) && !empty($_SESSION['pseudo'])) {
-                    // Controle des champs du formulaire
                     if (!empty($_POST['comment'])) {
                         addComment($_GET['id'], $_SESSION['pseudo'], $_POST['comment']);
                     } else {
@@ -47,7 +44,7 @@ try {
         // Inscription d'un membre
         elseif ($_GET['action'] == 'addMember') {
             // Contrôle des champs de formulaire
-            if (! empty($_POST['pseudo']) && ! empty($_POST['email']) && ! empty($_POST['pass'])) {
+            if (!empty($_POST['pseudo']) && !empty($_POST['email']) && !empty($_POST['pass'])) {
                 // Disponibilité du pseudo
                 if (freeMember($_POST['pseudo']) == null) {
                     // Hashage et vérification du mot de passe

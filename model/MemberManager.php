@@ -6,8 +6,8 @@ class MemberManager extends Manager {
     
     public function MMaddMember($pseudo, $pass, $email) {
         $db= $this->dbConnect();
-        $member = $db->prepare("INSERT INTO members(pseudo, pass, email, register_date)
-        VALUES(:pseudo, :pass, :email, CURDATE())");
+        $member = $db->prepare("INSERT INTO members(pseudo, pass, email, register_date, status_id)
+        VALUES(:pseudo, :pass, :email, CURDATE(), 4)");
         $member->execute(array(
             'pseudo' => $pseudo,
             'pass' => $pass,
