@@ -34,9 +34,12 @@ h1 {
 }
 
 .navigation {
+	/*test flexbox*/
+	display: flex;
+    flex-wrap: wrap;	
     margin-top: 20px;
     margin-bottom: 20px;
-    overflow: auto;
+    /*overflow: auto;*/
     padding: 10px;
 }
 
