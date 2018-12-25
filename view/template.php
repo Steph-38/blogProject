@@ -18,6 +18,7 @@ session_start();
     			<a href="index.php?action=viewLogin">Connexion</a>
     			<a href="index.php?action=logout">Déconnexion</a>
     			<a href="https://fr.lipsum.com/" title="Lien vers le site lipsum.com" target="_blank">Lorem</a>
+    			<a href="index.php?action=viewAddPost">Article</a>
 			</div>
     		<?php
     		if (isset($_SESSION['id']) && isset($_SESSION['pseudo'])) {

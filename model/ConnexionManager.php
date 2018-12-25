@@ -5,7 +5,7 @@ class ConnexionManager extends Manager {
     
     public function CMlogin($pseudo) {
         $db = $this->dbConnect();
-        $req = $db->prepare("SELECT id, pseudo, pass FROM members WHERE pseudo = :pseudo");
+        $req = $db->prepare("SELECT id, pseudo, pass, status_id FROM members WHERE pseudo = :pseudo");
         $req->execute(array(
             'pseudo' => $pseudo
         ));

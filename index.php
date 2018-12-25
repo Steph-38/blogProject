@@ -70,6 +70,20 @@ try {
         elseif ($_GET['action'] == 'logout') {
             logout();
         }
+        // Affichage de la page d'ajout d'un article
+        elseif ($_GET['action'] == 'viewAddPost') {
+            require 'view/addPostView.php';
+        }
+        // Ajout d'un article
+        elseif ($_GET['action'] == 'addPost') {
+            session_start();
+            if (isset($_SESSION['id']) && 
+                ($_SESSION['status_id'] >= 1 && $_SESSION['status_id'] <= 3)) {
+                addPost($_POST['title'], $_POST['post']);
+            } else {
+                throw new Exception('Vous ne pouvez pas poster d\'article !');
+            }
+        }
     } else {
         listPosts();
     }

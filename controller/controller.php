@@ -60,6 +60,7 @@ function login($pseudo, $pass) {
         session_start();
         $_SESSION['id'] = $login['id'];
         $_SESSION['pseudo'] = $pseudo;
+        $_SESSION['status_id'] = $login['status_id'];
         header('Location: index.php?action=listPosts');
     }
     
@@ -71,4 +72,12 @@ function logout() {
     session_destroy();
     header('Location: index.php');
 }
+
+function addPost($title, $content) {
+    $postManager = new PostManager();
+    $addPost = $postManager->PMaddPost($title, $content);
+    header('Location: index.php?action=listPosts');
+}
+
+
 
